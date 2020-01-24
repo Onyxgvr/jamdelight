@@ -2,15 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="383c2a30-dc13-4716-90bd-950f69e06854" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JamDelight.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Resources.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Strings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,25 +77,59 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579780875860</updated>
-      <workItem from="1579780878223" duration="726000" />
+      <workItem from="1579780878223" duration="2257000" />
+      <workItem from="1579874782931" duration="624000" />
+      <workItem from="1579875628341" duration="1808000" />
     </task>
+    <task id="LOCAL-00001" summary="First Change">
+      <created>1579781616057</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579781616057</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First Change" />
+    <option name="LAST_COMMIT_MESSAGE" value="First Change" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="583" y="29" key="CommitChangelistDialog2" timestamp="1579781212369">
+    <state x="583" y="29" key="CommitChangelistDialog2" timestamp="1579781615296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="583" y="29" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579781212369" />
+    <state x="583" y="29" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579781615296" />
     <state x="837" y="415" width="264" height="209" key="Github.ShareDialog" timestamp="1579781257883">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="837" y="415" width="264" height="209" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579781257883" />
-    <state x="552" y="250" key="Vcs.Push.Dialog.v2" timestamp="1579781292164">
+    <state width="1899" height="261" key="GridCell.Tab.0.bottom" timestamp="1579877338197">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="250" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579781292164" />
+    <state width="1899" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1579877338197" />
+    <state width="1899" height="261" key="GridCell.Tab.0.center" timestamp="1579877338197">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="261" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1579877338197" />
+    <state width="1899" height="261" key="GridCell.Tab.0.left" timestamp="1579877338197">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="261" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1579877338197" />
+    <state width="1899" height="261" key="GridCell.Tab.0.right" timestamp="1579877338197">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="261" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1579877338197" />
+    <state x="552" y="250" key="Vcs.Push.Dialog.v2" timestamp="1579781637352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="250" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579781637352" />
+    <state x="690" y="294" key="git4idea.merge.GitPullDialog" timestamp="1579782212281">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="294" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579782212281" />
   </component>
 </project>
