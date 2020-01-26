@@ -1,0 +1,33 @@
+
+
+
+.Footer {
+    grid-area: footer;
+    margin: 1em;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 2fr;
+    grid-row-gap: 1em;
+    align-content: center;
+}
+
+.FooterMessage {
+    grid-column: 1 / span 5;
+    justify-self: center;
+}
+
+.FooterMessageText {
+    display: inline-block;
+}
+
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.MainButton {
+    grid-column: 3;
+}

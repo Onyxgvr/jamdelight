@@ -1,0 +1,29 @@
+
+
+.JamDelight {
+    width: 600px;
+    height: 800px;
+
+    position: absolute;
+    top: 1em;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr 8fr 1fr;
+    grid-template-areas:
+            "header header header"
+            ". main ."
+            "footer footer footer";
+
+    border: 6px groove black;
+}
+
+
+
+.Main {
+    grid-area: main;
+    background-color: cornsilk;
+}
