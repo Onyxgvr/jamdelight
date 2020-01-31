@@ -29,6 +29,7 @@ export default function Footer(props) {
                 infoMessage = {props.infoMessage}
             />
             <MainButton
+                isDisabled = {props.isMainButtonDisabled}
                 buttonLabel={props.buttonLabel}
                 onClick={props.mainButtonOnClick}
             />
@@ -50,10 +51,11 @@ function FooterMessage (props) {
 
 
 function MainButton(props) {
+    const buttonState = (props.isDisabled) ? " disabled" : "";
     return (
         <button
-            className="MainButton"
-            onClick={(event) => props.onClick()}
+            className={"MainButton" + buttonState}
+            onClick={() => props.onClick()}
         >
             {props.buttonLabel}
         </button>

@@ -23,11 +23,31 @@
 
 
 .hidden {
-    visibility: hidden;
-    opacity: 0;
     transition: visibility 0s linear 300ms, opacity 300ms;
 }
 
 .MainButton {
     grid-column: 3;
+
+    min-width: 7em;
+    font-size: 1.7em;
+    font-weight: bold;
+    color: white;
+    background-color: dodgerblue;
+}
+.MainButton:hover {
+    background-color: blue;
+}
+.MainButton:active {
+    background-color: darkblue;
+}
+
+.disabled {
+    background-color: grey;
+}
+.disabled:hover {
+    background-color: grey;
+}
+.disabled:active {
+    background-color: grey;
 }
