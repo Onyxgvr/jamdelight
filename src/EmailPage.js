@@ -18,7 +18,7 @@ function EmailPage(props) {
     const [userEmail, setEmail] = useState ('');
 
     return (
-        <div>
+        <div className="grid-container">
             <h1>Enter Email</h1>
             <input
                 name="email"
