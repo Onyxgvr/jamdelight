@@ -15,15 +15,12 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal( //Port
                     </button>
                 </div>
                 <p>
-                    This are your answers!
+                    These are your answers!
                 </p>
-
             </div>
         </div>
     </React.Fragment>, document.body
 ) : null;
-
-
 
 const useModal = () => {
     const [isShowing, setIsShowing] = useState(false);
@@ -37,8 +34,6 @@ const useModal = () => {
         toggle,
     }
 };
-
-
 
 const Summary = () => {
     const {isShowing, toggle} = useModal();
