@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './Summary.css';
-import QuestionPage from "./QuestionPage";
+import QuestionPage from "./Components/QuestionPage/QuestionPage";
 import Questions from "./resources/Questions";
 
 const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal( //Portal: Allows child component to render in another part of the DOM outside of their parent component
