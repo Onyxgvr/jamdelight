@@ -1,10 +1,38 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './Summary.css';
-import QuestionPage from "./Components/QuestionPage/QuestionPage";
-import Questions from "./resources/Questions";
+import questions from "./resources/Questions";
 
-const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal( //Portal: Allows child component to render in another part of the DOM outside of their parent component
+function questionsAnswers(questions, answers){
+    let formattedAnswers = [];
+
+    for(let i=1; i<=questions.length+1; i++){
+        if(typeof answers[i] === "string"){
+            formattedAnswers.push (<li>{
+                answers[i]
+            }</li>)
+        }
+        else{
+            if(answers[i] !== null) {
+                const answer = (answers[i] !== null) ? questions[i-1].answers[answers[i]] :'No Answer';
+                formattedAnswers.push(<li>
+                    {
+                        questions[i - 1].question + ' ' + answer
+                    }
+                </li>)
+            }
+        }
+    }
+    
+    return(
+        <ol>
+            {formattedAnswers}
+        </ol>
+    );
+}
+
+const Modal = ({ isShowing, hide, questions, answers }) => isShowing ? ReactDOM.createPortal( //Portal: Allows child component to render in another part of the DOM outside of their parent component
+
     <React.Fragment>
         <div className="modal-overlay"/>
         <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
@@ -16,6 +44,10 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal( //Port
                 </div>
                 <p>
                     These are your answers!
+                    <br />
+
+                    {questionsAnswers(questions, answers)}
+
                 </p>
             </div>
         </div>
@@ -35,12 +67,14 @@ const useModal = () => {
     }
 };
 
-const Summary = () => {
+const Summary = (props) => {
     const {isShowing, toggle} = useModal();
     return (
         <div className="App">
             <button className="button-default" onClick={toggle}>Review Answers</button>
             <Modal
+                answers={props.answers}
+                questions={questions}
                 isShowing={isShowing}
                 hide={toggle}
             />
