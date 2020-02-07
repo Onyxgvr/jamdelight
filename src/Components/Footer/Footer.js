@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import Summary from "../../Summary";
 
 
 
@@ -14,6 +15,9 @@ export default function Footer(props) {
                 isDisabled = {props.isMainButtonDisabled}
                 buttonLabel={props.buttonLabel}
                 onClick={props.mainButtonOnClick}
+            />
+            <Summary
+                answers={props.answers}
             />
         </div>
     );
