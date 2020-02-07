@@ -40,15 +40,15 @@ function Breadcrumbs(props) {
     const crumbLabel = (answers.length > 6)? Resources.strings.CRUMBLABELSHORT : Resources.strings.CRUMBLABEL;
 
     let crumbs = [];
-    for (let i=1; i < answers.length; i++) {
-        const breadCrumb = (i === props.currentQuestion)? "BreadCrumb CurrentCrumb" : "BreadCrumb";
-        const crumbValue = (answers[i] === null) ? i : i + "✔";
+    for (let i=0; i < answers.length; i++) {
+        const breadCrumb = (i+1 === props.currentQuestion)? "BreadCrumb CurrentCrumb" : "BreadCrumb";
+        const crumbValue = (answers[i] === null || answers[i] === "") ? i+1 : i+1 + "✔";
 
         crumbs.push(
             <div
                 key={i}
                 className={breadCrumb}
-                onClick={() => {props.goToPage(i)}}
+                onClick={() => {props.goToPage(i+1)}}
             >
                 <div className="CrumbLabel">{crumbLabel}</div>
                 <span className="CrumbValue">{crumbValue}</span>

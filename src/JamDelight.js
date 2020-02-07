@@ -6,16 +6,16 @@ import Footer from "./Components/Footer/Footer";
 import WelcomePage from "./Components/WelcomePage/WelcomePage";
 import QuestionPage from "./Components/QuestionPage/QuestionPage";
 import EmailPage from "./Components/EmailPage/EmailPage";
+import Questionnaire from "./Questionnaire";
 
 
 
 export default function JamDelight() {
-    // Setup: 0 (welcome), 1-X (questions), X+1 (Email) (If you change this, change getLastAnswerIndex)
-    const [answers, setAnswers]  = useState(Array(Resources.questions.length + 2).fill(null));
+    const [q, setQ] = useState(new Questionnaire());
     const [currentQuestion, setCurrentQuestion] = useState(0);
 
     //Layout variables
-    const [info, setInfo] = useState("");
+    const [info, setInfo] = useState(["", false]);
     const [isMainButtonDisabled, setIsMainButtonDisabled] = useState(false);
     let mainButtonLabel = Resources.strings.FINISH;
     let headerDisplay = 'visible';
@@ -23,24 +23,18 @@ export default function JamDelight() {
 
 
 
-
-
     useEffect(() => {
-        if (currentQuestion > 0) setIsMainButtonDisabled(!isQuestionnaireCompleted());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [answers, currentQuestion]);
-
+        if (currentQuestion > 0) setIsMainButtonDisabled(!q.getIsCompleted());
+    }, [currentQuestion, q]);
 
 
 
     /*
     * UI functions
      */
-
-
     function nextPage() {
-        if (currentQuestion >= getLastAnswerIndex()) {
-            setCurrentQuestion(getLastAnswerIndex());
+        if (currentQuestion >= q.getQuestionnaireLength()) {
+            setCurrentQuestion(q.getQuestionnaireLength());
             infoMessage(Resources.strings.NONEXTQUESTION);
         } else {
             setCurrentQuestion(currentQuestion + 1);
@@ -55,7 +49,7 @@ export default function JamDelight() {
         }
     }
     function goToPage(pageNumber) {
-        if (1 <= pageNumber && pageNumber <= getLastAnswerIndex()) {
+        if (1 <= pageNumber && pageNumber <= q.getQuestionnaireLength()) {
             setCurrentQuestion(pageNumber);
         } else {
             infoMessage(Resources.strings.NOSUCHQUESTION);
@@ -66,23 +60,24 @@ export default function JamDelight() {
         event.preventDefault();
 
         if (isValid) {
-            const newAnswers = [...answers];
-            newAnswers[currentQuestion] = email;
-            setAnswers(newAnswers);
-            isQuestionnaireCompleted(newAnswers) ?
-                    infoMessage("Everything has been completed! (Show modal)") //TODO: Replace with summary handling
-                :   infoMessage(Resources.strings.EMAILNOTLAST);
+            const newQ = new Questionnaire(q.answers, email);
+            setQ(newQ);
+
+            newQ.getIsCompleted() ?
+                infoMessage("Everything has been completed! (Show modal)") //TODO: Replace with summary handling
+            :   infoMessage(Resources.strings.EMAILNOTLAST);
         } else {
             infoMessage(Resources.strings.EMAILNOTVALID);
         }
     }
 
     function answerSubmitted(answerIndex) {
-        const goToNext = (isNextQuestionBlank() && answers[currentQuestion] === null);
+        const goToNext = (q.getIsNextQuestionBlank(currentQuestion) && q.getAnswer(currentQuestion) === null);
 
-        const newAnswers = [...answers];
-        newAnswers[currentQuestion] = answerIndex;
-        setAnswers(newAnswers);
+        const newAnswers = [...q.answers];
+        newAnswers[currentQuestion-1] = answerIndex;
+        const newQ = new Questionnaire(newAnswers, q.email);
+        setQ(newQ);
 
         if (goToNext) nextPage();
     }
@@ -92,40 +87,14 @@ export default function JamDelight() {
             setCurrentQuestion(1);
             setIsMainButtonDisabled(true);
         } else {
-            isQuestionnaireCompleted()?
-                        infoMessage("Everything has been completed! (Show modal)") //TODO: Replace with summary handling
-                    :   infoMessage(Resources.strings.NOTCOMPLETED);
+            q.getIsCompleted() ?
+                infoMessage("Everything has been completed! (Show modal)") //TODO: Replace with summary handling
+            :   infoMessage(Resources.strings.NOTCOMPLETED);
         }
     }
 
     function infoMessage(message) {
-        setInfo(message);
-    }
-    function clearMessage() {
-        setInfo("");
-    }
-
-
-
-    /*
-    * Helper Functions
-     */
-
-    function isQuestionnaireCompleted(questionnaire) {
-        const checkingAnswers = questionnaire ? questionnaire : answers;
-        for (let i = 1; i <= getLastAnswerIndex(); i++) {
-            if (checkingAnswers[i] === null) return false;
-        }
-        return true;
-    }
-
-    function isNextQuestionBlank() {
-        return currentQuestion < getLastAnswerIndex() && answers[currentQuestion+1] === null;
-    }
-
-    // Only need to change this if the answers[] setup is changed.
-    function getLastAnswerIndex() {
-        return answers.length - 1;
+        setInfo([message, true]);
     }
 
 
@@ -134,8 +103,6 @@ export default function JamDelight() {
     /*
     * Main Page setup
      */
-
-
     let currentPage;
     switch(true) {
         // Welcome Page
@@ -147,11 +114,11 @@ export default function JamDelight() {
             break;
         }
         // e-Mail Page
-        case currentQuestion === getLastAnswerIndex():
+        case currentQuestion === q.getQuestionnaireLength():
         {
             navigationButtonsActive.next = false;
             currentPage = <EmailPage
-                email = {answers[getLastAnswerIndex()]}
+                email = {q.email}
                 onEmailSubmitted = {emailSubmitted}
             />;
             break;
@@ -164,7 +131,7 @@ export default function JamDelight() {
             }
             currentPage = <QuestionPage
                 currentQuestion = {currentQuestion}
-                currentAnswer = {answers[currentQuestion]}
+                currentAnswer = {q.getAnswer(currentQuestion)}
                 onAnswerClick = {answerSubmitted}
             />;
         }
@@ -181,7 +148,7 @@ export default function JamDelight() {
                 headerDisplay = {headerDisplay}
                 navigationButtonsActive = {navigationButtonsActive}
                 // For Breadcrumbs
-                answers = {answers}
+                answers = {q.getBreadcrumbs()}
                 currentQuestion = {currentQuestion}
                 goToPage = {goToPage}
             />
@@ -192,7 +159,6 @@ export default function JamDelight() {
 
             <Footer
                 infoMessage = {info}
-                clearMessage = {clearMessage}
 
                 buttonLabel = {mainButtonLabel}
                 isMainButtonDisabled = {isMainButtonDisabled}

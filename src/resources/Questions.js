@@ -8,7 +8,7 @@ const FOURTH = 3;
 const FIFTH = 4;
 
 
-//I know there are no _correct_ answers, I just wanted to update the structure to account for future changes.
+//I know there are no _correct_ answers, I just wanted to test various structures to account for future changes.
 
 
 const questions =

@@ -15,16 +15,18 @@
 .FooterMessage {
     grid-column: 1 / span 5;
     justify-self: center;
+    animation: hiding 1s linear 3s forwards;
+}
+
+@keyframes hiding {
+    0%   {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 .FooterMessageText {
     display: inline-block;
 }
 
-
-.hidden {
-    transition: visibility 0s linear 300ms, opacity 300ms;
-}
 
 .MainButton {
     grid-column: 3;
