@@ -12,6 +12,15 @@ export default class Questionnaire {
 
 
 
+    getQuestion(questionIndex) {
+        if (questionIndex + 1 === this.getQuestionnaireLength()) { return Resources.strings.EMAIL; }
+        return Resources.questions[questionIndex].question;
+    }
+
+    getVerboseAnswer(questionIndex) {
+        if (questionIndex + 1 === this.getQuestionnaireLength()) { return this.email; }
+        return Resources.questions[questionIndex].answers[this.answers[questionIndex]];
+    }
 
     getAnswer(questionIndex) {
         if (questionIndex === this.getQuestionnaireLength()) { return this.email; }

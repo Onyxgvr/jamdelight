@@ -3,8 +3,12 @@
 const strings= {
     START: "Start",
     FINISH: "Finish",
+    SUBMIT: "Submit",
     BACK: "Back",
     NEXT: "Next",
+    EDIT: "Edit",
+    THANKYOU: "Thank you!",
+    EMAIL: "E-mail",
 
     NOTCOMPLETED: "Please answer all questions to complete the questionnaire",
     NOPREVIOUSQUESTION: "This is the first question",
@@ -18,12 +22,16 @@ const strings= {
 
     EMAILLABEL: "Please enter your e-mail address",
     EMAILPLACEHOLDER: "e-mail",
-    EMAILSUBMIT: "Submit",
     EMAILNOTVALID: "Please enter a valid e-mail address",
     EMAILNOTLAST: "Thank you for your email. You still have unanswered questions.",
 
     CRUMBLABEL: "Question",
     CRUMBLABELSHORT: "Q",
+
+    QCOMPLETE: "Questionnaire Complete",
+    QHEAD: "You have given the following answers:",
+    QDONE: "Press 'Edit' to return to the questionnaire in case you need something changed, or press 'Finish' to submit it.",
+
 };
 
 export default strings;

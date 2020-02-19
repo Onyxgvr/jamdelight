@@ -1,6 +1,5 @@
 import React from 'react';
-import './QuestionPage.css';
-import Resources from "../../resources/Resources";
+import Resources from "../resources/Resources";
 
 
 export default function QuestionPage(props) {
@@ -11,11 +10,12 @@ export default function QuestionPage(props) {
 
 
     function renderAnswerButton(relevantQuestion, selected, onAnswerClick, index) {
+        const answerClass = "btn text-dark";
         return (
             <AnswerButton
                 key = {index}
                 index = {index}
-                className = {selected ? "answerButton selected" : "answerButton"}
+                className = {selected ? answerClass + " btn-warning" : answerClass + " btn-outline-warning"}
                 answerText = {relevantQuestion.answers[index]}
                 onAnswerClick = {onAnswerClick}
             />
@@ -34,11 +34,11 @@ export default function QuestionPage(props) {
 
 
     return(
-        <div className="QuestionPage">
-            <span className="questionLabel">Question {props.currentQuestion}:</span>
-            <span className="questionText">{questionText}</span>
-            <span className="selectedAnswer">{selectedAnswerText}</span>
-            <div className="answersGrid">
+        <div className="col text-center">
+            <span className="row w-50 mx-auto">Question {props.currentQuestion}:</span>
+            <h4 className="row justify-content-center mt-3">{questionText}</h4>
+            <h5 className="row justify-content-center text-muted mt-3">{selectedAnswerText}</h5>
+            <div className="row w-75 mx-auto my-5">
                 {populateAnswers(relevantQuestion, props.onAnswerClick)}
             </div>
 
@@ -49,7 +49,7 @@ export default function QuestionPage(props) {
 
 function AnswerButton(props) {
     return (
-        <div className="answerButtonWrapper">
+        <div className="col">
             <button
                 className={props.className}
                 onClick={() => props.onAnswerClick(props.index)}

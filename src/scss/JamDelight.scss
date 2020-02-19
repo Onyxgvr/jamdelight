@@ -1,0 +1,102 @@
+
+// Override default variables before the import
+
+$enable-gradients: true;
+
+
+
+
+// Include all of Bootstrap
+@import '~bootstrap/scss/bootstrap.scss';
+
+//// OR Include parts of Bootstrap
+//// Required
+// @import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/mixins";
+//// Optional
+// @import "~bootstrap/scss/grid";
+// etc
+
+
+
+////////////////////////////////////////////////////
+
+
+
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.grayedout {
+  background-color: grey;
+  color: white;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.very-rounded {
+  border-radius: 0.5em;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.h-tall {
+  height: 500px;
+}
+
+
+
+
+////////////////////
+// Specific Handling
+////////////////////
+
+.JamDelight {
+  font-family: "Georgia", Georgia, serif;
+}
+
+
+// Footer Message
+.FooterMessage {
+  animation: hiding 0.5s linear 3s forwards;
+}
+@keyframes hiding {
+  0%   {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+
+// Breadcrumbs
+.CrumbLabel {
+  font-size: 0.9em;
+}
+.CrumbValue {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+.CurrentCrumb {
+  box-shadow: 0 0.25em darken($info, 5%);
+}
+
+.buttonIcon {
+  display: inline-block;
+  height: 26px;
+  width: auto;
+}
+
+// Summary
+.SummaryTitle {
+  width: 100%;
+  text-align: center;
+}

@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import './JamDelight.css';
+import './scss/JamDelight.scss';
 import Resources from "./resources/Resources.js";
-import Header from "./Components/Header/Header";
-import Footer from "./Components/Footer/Footer";
-import WelcomePage from "./Components/WelcomePage/WelcomePage";
-import QuestionPage from "./Components/QuestionPage/QuestionPage";
-import EmailPage from "./Components/EmailPage/EmailPage";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 import Questionnaire from "./Questionnaire";
+import WelcomePage from "./Components/WelcomePage";
+import QuestionPage from "./Components/QuestionPage";
+import EmailPage from "./Components/EmailPage";
+import Summary from "./Components/Summary";
 
 
 
@@ -15,7 +16,8 @@ export default function JamDelight() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
 
     //Layout variables
-    const [info, setInfo] = useState(["", false]);
+    const [info, setInfo] = useState("");
+    const [isSummaryVisible, setIsSummaryVisible] = useState(false);
     const [isMainButtonDisabled, setIsMainButtonDisabled] = useState(false);
     let mainButtonLabel = Resources.strings.FINISH;
     let headerDisplay = 'visible';
@@ -64,7 +66,7 @@ export default function JamDelight() {
             setQ(newQ);
 
             newQ.getIsCompleted() ?
-                infoMessage("Everything has been completed! (Show modal)") //TODO: Replace with summary handling
+                showSummary()
             :   infoMessage(Resources.strings.EMAILNOTLAST);
         } else {
             infoMessage(Resources.strings.EMAILNOTVALID);
@@ -88,13 +90,24 @@ export default function JamDelight() {
             setIsMainButtonDisabled(true);
         } else {
             q.getIsCompleted() ?
-                infoMessage("Everything has been completed! (Show modal)") //TODO: Replace with summary handling
+                showSummary()
             :   infoMessage(Resources.strings.NOTCOMPLETED);
         }
     }
 
     function infoMessage(message) {
-        setInfo([message, true]);
+        setInfo([message]);
+    }
+
+    function showSummary() {
+        setIsSummaryVisible(true);
+    }
+    function hideSummary() {
+        setIsSummaryVisible(false);
+    }
+    function finalizeSummary() {
+        setIsSummaryVisible(false);
+        //TODO: Archive questionnaire
     }
 
 
@@ -140,7 +153,13 @@ export default function JamDelight() {
 
 
     return (
-        <div className="JamDelight">
+        <div className="JamDelight container mt-3">
+            <Summary
+                show = {isSummaryVisible}
+                hideSummary = {hideSummary}
+                finalizeSummary = {finalizeSummary}
+                q = {q}
+            />
 
             <Header
                 nextPage = {nextPage}
@@ -153,7 +172,7 @@ export default function JamDelight() {
                 goToPage = {goToPage}
             />
 
-            <div className="Main">
+            <div className="row bg-gradient-light h-tall align-content-center" >
                 {currentPage}
             </div>
 

@@ -1,13 +1,11 @@
 import React from 'react';
-import './Footer.css';
-import Summary from "../../Summary";
 
 
 
 
 export default function Footer(props) {
     return (
-        <div className="Footer">
+        <div className="text-center m-1">
             <FooterMessage
                 infoMessage = {props.infoMessage}
             />
@@ -15,9 +13,6 @@ export default function Footer(props) {
                 isDisabled = {props.isMainButtonDisabled}
                 buttonLabel={props.buttonLabel}
                 onClick={props.mainButtonOnClick}
-            />
-            <Summary
-                answers={props.answers}
             />
         </div>
     );
@@ -29,22 +24,21 @@ function FooterMessage (props) {
     const message = props.infoMessage === "" ? "\u200b" : props.infoMessage;
 
     return (
-        <div key={+new Date()} className="FooterMessage">
-            <span className="FooterMessageText">{message}</span>
+        <div key={+new Date()} className="FooterMessage m-1">
+            <span className="d-inline-block">{message}</span>
         </div>
     );
 }
 
 
 function MainButton(props) {
-    const buttonState = (props.isDisabled) ? " disabled" : "";
+    const buttonState = (props.isDisabled) ? " grayedout" : " btn-primary";
     return (
         <button
-            className={"MainButton" + buttonState}
+            className={"btn mt-2 w-25" + buttonState}
             onClick={() => props.onClick()}
         >
-            {props.buttonLabel}
+            <span className="h3">{props.buttonLabel}</span>
         </button>
     );
-
 }
