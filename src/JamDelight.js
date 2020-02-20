@@ -12,6 +12,7 @@ import Summary from "./Components/Summary";
 
 
 export default function JamDelight() {
+    const [log, setLog] = useState([]);
     const [q, setQ] = useState(new Questionnaire());
     const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -96,7 +97,7 @@ export default function JamDelight() {
     }
 
     function infoMessage(message) {
-        setInfo([message]);
+        setInfo(message);
     }
 
     function showSummary() {
@@ -106,8 +107,17 @@ export default function JamDelight() {
         setIsSummaryVisible(false);
     }
     function finalizeSummary() {
+        const newLog = [...log];
+        newLog.push(q);
+        setLog(newLog);
+        reset();
+    }
+
+    function reset() {
         setIsSummaryVisible(false);
-        //TODO: Archive questionnaire
+        setCurrentQuestion(0);
+        setQ(new Questionnaire());
+        setInfo("");
     }
 
 
@@ -187,9 +197,6 @@ export default function JamDelight() {
         </div>
     );
 }
-
-
-
 
 
 

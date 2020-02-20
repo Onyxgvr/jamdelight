@@ -37,6 +37,7 @@ function MainButton(props) {
         <button
             className={"btn mt-2 w-25" + buttonState}
             onClick={() => props.onClick()}
+            data-cy="Main Button"
         >
             <span className="h3">{props.buttonLabel}</span>
         </button>

@@ -7,7 +7,10 @@ export default function Header(props) {
     const nextButtonState = (props.navigationButtonsActive.next) ? " btn-info" : " grayedout";
 
     return(
-        <div className={"row mg-0 " + props.headerDisplay}>
+        <div
+            className={"row mg-0 " + props.headerDisplay}
+            data-cy="Header"
+        >
             <button
                 id="NavigationBarButtonBack"
                 className={"col-1 btn border" + backButtonState}
@@ -54,7 +57,7 @@ function Breadcrumbs(props) {
         crumbs.push(
             <div
                 key={i}
-                className={"col" + breadCrumb}
+                className={"col my-auto" + breadCrumb}
                 onClick={() => {props.goToPage(i+1)}}
             >
                 <div className="CrumbLabel">{crumbLabel}</div>
@@ -65,7 +68,10 @@ function Breadcrumbs(props) {
 
     return (
         <div className="col-10 text-center bg-gradient-info cursor-pointer">
-            <div className="row">
+            <div
+                className="row h-100"
+                data-cy = "Breadcrumbs"
+            >
                 {crumbs}
             </div>
         </div>

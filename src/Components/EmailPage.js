@@ -23,10 +23,12 @@ export default function EmailPage(props) {
                 value={userEmail}
                 onChange={(event => setUserEmail (event.target.value))}
                 placeholder={Resources.strings.EMAILPLACEHOLDER}
+                data-cy="eMail Input"
             />
             <button
                 className="row btn btn-primary mt-5"
                 type="submit"
+                data-cy="eMail Submit Button"
             >
                 <span className="h5">{Resources.strings.SUBMIT}</span>
             </button>

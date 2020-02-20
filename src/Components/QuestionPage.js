@@ -49,7 +49,10 @@ export default function QuestionPage(props) {
 
 function AnswerButton(props) {
     return (
-        <div className="col">
+        <div
+            className="col"
+            data-cy="Answer Button Array"
+        >
             <button
                 className={props.className}
                 onClick={() => props.onAnswerClick(props.index)}

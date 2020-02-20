@@ -53,6 +53,7 @@ export default function Summary(props) {
                 onHide={props.hideSummary}
                 backdrop="static"
                 scrollable={true}
+                data-cy="Modal"
             >
                 <Modal.Header>
                     <Modal.Title className="SummaryTitle">{Resources.strings.THANKYOU}</Modal.Title>
@@ -71,10 +72,18 @@ export default function Summary(props) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <button className="btn btn-secondary px-4" onClick={props.hideSummary}>
+                    <button
+                        className="btn btn-secondary px-4"
+                        onClick={props.hideSummary}
+                        data-cy="Modal Edit"
+                    >
                         {Resources.strings.EDIT}
                     </button>
-                    <button className="btn btn-primary px-5" onClick={props.finalizeSummary}>
+                    <button
+                        className="btn btn-primary px-5"
+                        onClick={props.finalizeSummary}
+                        data-cy="Modal Finish"
+                    >
                         {Resources.strings.FINISH}
                     </button>
                 </Modal.Footer>
