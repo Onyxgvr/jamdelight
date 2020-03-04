@@ -23,8 +23,6 @@ $enable-gradients: true;
 ////////////////////////////////////////////////////
 
 
-
-
 .hidden {
   visibility: hidden;
   opacity: 0;
@@ -53,6 +51,20 @@ $enable-gradients: true;
 
 .h-tall {
   min-height: 400px;
+}
+
+.text-contrast {
+  $contrast_color: rgba(220, 220, 220, 0.5);
+  color: black;
+  text-shadow:
+          -1px -1px 0 $contrast_color,
+          1px -1px 0 $contrast_color,
+          -1px 1px 0 $contrast_color,
+          1px 1px 0 $contrast_color;
+}
+
+.contrast_backdrop {
+  background-color: rgba(220, 220, 220, 0.5);
 }
 
 
@@ -99,4 +111,59 @@ $enable-gradients: true;
 .SummaryTitle {
   width: 100%;
   text-align: center;
+}
+
+// Question
+.top_left {
+  position: absolute;
+  top: 2em;
+  left: 10%;
+}
+
+.top_right {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+}
+
+.bottom_left {
+  position: absolute;
+  bottom: 5%;
+  left: 10%
+}
+
+.bottom_center {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+// Card Button
+$button-color: bisque;
+$button-shadow: #999;
+.answer-card {
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 3px 9px $button-shadow;
+}
+.answer-card:hover {
+  background-color: $button-color;
+}
+.answer-card:active {
+  background-color: darken($button-color, 10%);
+  box-shadow: 3px 5px darken($button-shadow, 10%);
+  transform: translateY(4px);
+}
+.selected-border {
+  box-shadow: inset 0 0 0 0.3em darken($button-color, 20%);
+  //border: 0.3em solid darken($button-color, 20%);
+}
+.overshadow {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
 }

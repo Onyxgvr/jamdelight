@@ -45,7 +45,6 @@ function DisplayAnswers(props) {
 
 
 export default function Summary(props) {
-
     return (
         <React.Fragment>
             <Modal

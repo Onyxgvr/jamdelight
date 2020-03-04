@@ -5,10 +5,16 @@ import React from 'react';
 
 export default function Footer(props) {
     return (
-        <div className="text-center m-1">
+        <div className="text-center m-1 position-relative">
             <FooterMessage
                 infoMessage = {props.infoMessage}
             />
+            <button
+                className="btn btn-danger bottom_left"
+                onClick={() => props.resetButtonOnClick()}
+            >
+                Reset
+            </button>
             <MainButton
                 isDisabled = {props.isMainButtonDisabled}
                 buttonLabel={props.buttonLabel}

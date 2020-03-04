@@ -9,6 +9,8 @@ const strings= {
     EDIT: "Edit",
     THANKYOU: "Thank you!",
     EMAIL: "E-mail",
+    QUESTION: "Question",
+    LOADINGIMAGE: "Loading Image",
 
     NOTCOMPLETED: "Please answer all questions to complete the questionnaire",
     NOPREVIOUSQUESTION: "This is the first question",
@@ -31,6 +33,11 @@ const strings= {
     QCOMPLETE: "Questionnaire Complete",
     QHEAD: "You have given the following answers:",
     QDONE: "Press 'Edit' to return to the questionnaire in case you need something changed, or press 'Finish' to submit it.",
+
+    RESETWARNING: "Reset Alert",
+    RESETWARNINGDESCRIPTION: "Are you sure you want to reset?",
+    NEVERMIND: "Nevermind",
+    RESET: "Reset",
 
 };
 

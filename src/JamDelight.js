@@ -8,6 +8,7 @@ import WelcomePage from "./Components/WelcomePage";
 import QuestionPage from "./Components/QuestionPage";
 import EmailPage from "./Components/EmailPage";
 import Summary from "./Components/Summary";
+import {ResetConfirmation} from "./Components/Alerts";
 
 
 
@@ -19,6 +20,7 @@ export default function JamDelight() {
     //Layout variables
     const [info, setInfo] = useState("");
     const [isSummaryVisible, setIsSummaryVisible] = useState(false);
+    const [isResetAlertVisible, setIsResetAlertVisible] = useState(false);
     const [isMainButtonDisabled, setIsMainButtonDisabled] = useState(false);
     let mainButtonLabel = Resources.strings.FINISH;
     let headerDisplay = 'visible';
@@ -113,8 +115,17 @@ export default function JamDelight() {
         reset();
     }
 
+    function showResetAlert() {
+        setIsResetAlertVisible(true);
+    }
+    function hideResetAlert() {
+        setIsResetAlertVisible(false);
+    }
+
     function reset() {
         setIsSummaryVisible(false);
+        setIsResetAlertVisible(false);
+        setIsMainButtonDisabled(false);
         setCurrentQuestion(0);
         setQ(new Questionnaire());
         setInfo("");
@@ -170,6 +181,11 @@ export default function JamDelight() {
                 finalizeSummary = {finalizeSummary}
                 q = {q}
             />
+            <ResetConfirmation
+                show = {isResetAlertVisible}
+                hideResetAlert = {hideResetAlert}
+                reset = {reset}
+            />
 
             <Header
                 nextPage = {nextPage}
@@ -191,6 +207,7 @@ export default function JamDelight() {
 
                 buttonLabel = {mainButtonLabel}
                 isMainButtonDisabled = {isMainButtonDisabled}
+                resetButtonOnClick = {showResetAlert}
                 mainButtonOnClick = {mainButtonClick}
             />
 
