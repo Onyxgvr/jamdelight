@@ -47,7 +47,9 @@ export default class Questionnaire {
         for (let i = 0; i < this.answers.length; i++) {
             if (this.answers[i] === null) return false;
         }
-        return this.email.length > 0;
+        // Uncomment this to make email mandatory
+        // return this.email.length > 0;
+        return true;
     }
 }
 

@@ -101,6 +101,9 @@ export default function JamDelight() {
     function infoMessage(message) {
         setInfo(message);
     }
+    function deleteInfoMessage() {
+        setInfo("");
+    }
 
     function showSummary() {
         setIsSummaryVisible(true);
@@ -204,6 +207,7 @@ export default function JamDelight() {
 
             <Footer
                 infoMessage = {info}
+                deleteInfoMessage = {deleteInfoMessage}
 
                 buttonLabel = {mainButtonLabel}
                 isMainButtonDisabled = {isMainButtonDisabled}

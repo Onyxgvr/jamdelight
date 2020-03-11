@@ -8,7 +8,6 @@ const secondEmail = "second@Jammail.com";
 
 
 
-
 describe("Jam Delight", function () {
 
 
@@ -72,7 +71,7 @@ describe("Jam Delight", function () {
                             cy.get('[data-cy="Answer Button Array"]')
                                 .children()
                                 .eq(Math.floor(Math.random() * btnNumber))
-                                .click()
+                                .click({force:true})
                         });
                     }
                 });

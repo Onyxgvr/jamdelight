@@ -8,6 +8,7 @@ export default function Footer(props) {
         <div className="text-center m-1 position-relative">
             <FooterMessage
                 infoMessage = {props.infoMessage}
+                deleteInfoMessage = {props.deleteInfoMessage}
             />
             <button
                 className="btn btn-danger bottom_left"
@@ -30,7 +31,10 @@ function FooterMessage (props) {
     const message = props.infoMessage === "" ? "\u200b" : props.infoMessage;
 
     return (
-        <div key={+new Date()} className="FooterMessage m-1">
+        <div key={+new Date()}
+             className="FooterMessage m-1"
+             onAnimationEnd={() => props.deleteInfoMessage()}
+        >
             <span className="d-inline-block">{message}</span>
         </div>
     );
